@@ -104,8 +104,8 @@ product list = foldLeft (\b a -> b*a) 1 list
 sum ::
   List Int
   -> Int
-sum =
-  error "todo: Course.List#sum"
+sum = foldLeft (\b a -> b+a) 0
+
 
 -- | Return the length of the list.
 --
