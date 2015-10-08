@@ -89,8 +89,8 @@ headOr a _ = a
 product ::
   List Int
   -> Int
-product =
-  error "todo: Course.List#product"
+product list = foldLeft (\b a -> b*a) 1 list
+
 
 -- | Sum the elements of the list.
 --
