@@ -288,8 +288,7 @@ find f (x :. xs) =
 lengthGT4 ::
   List a
   -> Bool
-lengthGT4 =
-  error "todo: Course.List#lengthGT4"
+lengthGT4 a = 4 < length a
 
 -- | Reverse a list.
 --
