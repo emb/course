@@ -166,8 +166,9 @@ filter p =
   List a
   -> List a
   -> List a
-(++) =
-  error "todo: Course.List#(++)"
+(++) Nil ys       = ys
+(++) (x :. xs) ys = (x :. (xs ++ ys))
+
 
 infixr 5 ++
 
