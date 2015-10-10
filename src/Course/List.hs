@@ -185,8 +185,9 @@ infixr 5 ++
 flatten ::
   List (List a)
   -> List a
-flatten =
-  error "todo: Course.List#flatten"
+flatten (x :. Nil) = x
+flatten (x :. xs)  = x ++ flatten xs
+
 
 -- | Map a function then flatten to a list.
 --
