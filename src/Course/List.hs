@@ -185,6 +185,7 @@ infixr 5 ++
 flatten ::
   List (List a)
   -> List a
+flatten Nil        = Nil
 flatten (x :. Nil) = x
 flatten (x :. xs)  = x ++ flatten xs
 
@@ -213,8 +214,7 @@ flatMap f = flatten . map f
 flattenAgain ::
   List (List a)
   -> List a
-flattenAgain =
-  error "todo: Course.List#flattenAgain"
+flattenAgain = flatMap id
 
 -- | Convert a list of optional values to an optional list of values.
 --
