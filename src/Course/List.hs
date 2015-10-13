@@ -333,8 +333,7 @@ produce f a = a :. map f (produce f a)
 notReverse ::
   List a
   -> List a
-notReverse =
-  error "todo: Is it even possible?"
+notReverse = reverse -- Still WTF!
 
 ---- End of list exercises
 
