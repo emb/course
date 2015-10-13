@@ -89,7 +89,7 @@ headOr _ (a :. _) = a
 product ::
   List Int
   -> Int
-product list = foldLeft (\b a -> b*a) 1 list
+product = foldLeft (*) 1
 
 
 -- | Sum the elements of the list.
@@ -104,7 +104,7 @@ product list = foldLeft (\b a -> b*a) 1 list
 sum ::
   List Int
   -> Int
-sum = foldLeft (\b a -> b+a) 0
+sum = foldLeft (+) 0
 
 
 -- | Return the length of the list.
