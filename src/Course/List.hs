@@ -288,7 +288,8 @@ find f (x :. xs) =
 lengthGT4 ::
   List a
   -> Bool
-lengthGT4 a = 4 < length a
+lengthGT4 (_ :. _ :. _ :. _ :. _) = True
+lengthGT4 _                       = False
 
 -- | Reverse a list.
 --
