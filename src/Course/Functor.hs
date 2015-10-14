@@ -42,7 +42,8 @@ instance Functor Id where
     -> Id a
     -> Id b
   (<$>) =
-    error "todo: Course.Functor (<$>)#instance Id"
+    mapId -- Use an alreay defined function.
+
 
 -- | Maps a function on the List functor.
 --
