@@ -75,13 +75,16 @@ instance Applicative Id where
     a
     -> Id a
   pure =
-    error "todo: Course.Applicative pure#instance Id"
+    Id
   (<*>) :: 
     Id (a -> b)
     -> Id a
     -> Id b
-  (<*>) =
-    error "todo: Course.Applicative (<*>)#instance Id"
+  (<*>) (Id g) (Id x) =
+    pure (g x)
+    --Id (g x)
+  --(<*>) (Id g) =
+    --P.fmap g
 
 -- | Insert into a List.
 --
