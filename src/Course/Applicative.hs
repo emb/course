@@ -97,13 +97,18 @@ instance Applicative List where
     a
     -> List a
   pure =
-    error "todo: Course.Applicative pure#instance List"
+    flip (:.) Nil
+  -- pure a =
+  --   (a :. Nil)
   (<*>) ::
     List (a -> b)
     -> List a
     -> List b
-  (<*>) =
-    error "todo: Course.Apply (<*>)#instance List"
+  (<*>) fs l =
+    foldRight (\f-> (++) (map f l)) Nil fs
+    --foldRight (\f a -> (map f l) ++ a) Nil fs
+    --flatten (foldRight (\f -> (:.) (map f l)) Nil fs)
+    --flatten (foldRight (\f a-> (map f l) :. a) Nil fs)
 
 -- | Insert into an Optional.
 --
