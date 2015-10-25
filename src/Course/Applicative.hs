@@ -160,13 +160,14 @@ instance Applicative ((->) t) where
     a
     -> ((->) t a)
   pure =
-    error "todo: Course.Applicative pure#((->) t)"
+    const
   (<*>) ::
     ((->) t (a -> b))
     -> ((->) t a)
     -> ((->) t b)
-  (<*>) =
-    error "todo: Course.Apply (<*>)#instance ((->) t)"
+  (<*>) f g =
+    (\x -> f x (g x))
+    -- Why doesn't this work (\x -> f (g x) x)
 
 
 -- | Apply a binary function in the environment.
