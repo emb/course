@@ -84,8 +84,8 @@ instance Monad Id where
     (a -> Id b)
     -> Id a
     -> Id b
-  (=<<) =
-    error "todo: Course.Monad (=<<)#instance Id"
+  f =<< Id a =
+    f a
 
 -- | Binds a function on a List.
 --
