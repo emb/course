@@ -120,8 +120,8 @@ instance Monad ((->) t) where
     (a -> ((->) t b))
     -> ((->) t a)
     -> ((->) t b)
-  (=<<) =
-    error "todo: Course.Monad (=<<)#instance ((->) t)"
+  f =<< a =
+    \t -> f (a t) t
 
 -- | Flattens a combined structure to a single structure.
 --
