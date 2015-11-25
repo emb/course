@@ -61,8 +61,11 @@ the contents of c
 -- /Tip:/ use @getArgs@ and @run@
 main ::
   IO ()
-main =
-  error "todo: Course.FileIO#main"
+main = main' =<< getArgs
+       where
+         main' (fname :. Nil) = run fname
+         main' _              =
+           putStrLn "[ERROR]\nUsage: runhaskell Course/FileIO \"FILE_NAME\""
 
 type FilePath =
   Chars
@@ -71,31 +74,36 @@ type FilePath =
 run ::
   Chars
   -> IO ()
-run =
-  error "todo: Course.FileIO#run"
+run fname = readFile fname >>= getFiles' >>= printFiles
+            where
+              getFiles' = getFiles . lines
 
 getFiles ::
   List FilePath
   -> IO (List (FilePath, Chars))
 getFiles =
-  error "todo: Course.FileIO#getFiles"
+  sequence . (<$>) getFile
+  --sequence (getFile <$> files)
 
 getFile ::
   FilePath
   -> IO (FilePath, Chars)
-getFile =
-  error "todo: Course.FileIO#getFile"
+getFile file =
+  (\content -> (file, content)) <$> readFile file
 
 printFiles ::
   List (FilePath, Chars)
   -> IO ()
 printFiles =
-  error "todo: Course.FileIO#printFiles"
+  void . sequence . (<$>) (\(a,b) -> printFile a b)
+  ---- ^^ using composition and removing files as the argument.
+  --void (sequence ((<$>) (\(a,b) -> printFile a b) files))
+  --void (sequence ((\(a,b) -> printFile a b) <$> files))
+
 
 printFile ::
   FilePath
   -> Chars
   -> IO ()
-printFile =
-  error "todo: Course.FileIO#printFile"
-
+printFile name content =
+  putStrLn ("========== " ++ name) *> putStrLn content
